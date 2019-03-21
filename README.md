@@ -1,1 +1,2 @@
-# topcoder_arena
+# topcoder Arena (Beta)
+Solving topcoder arena problems.
