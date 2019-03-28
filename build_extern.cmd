@@ -29,6 +29,8 @@ if exist %google_test_build_folder% (
 @mkdir .\%build_extern_name%\google-test\%default_src_name%
 @robocopy %google_test_build_folder%\lib\Debug .\%build_extern_name%\google-test\%default_lib_name% *.lib /Z /R:5 /W:5 /V /MT
 @robocopy %google_test_build_folder%\lib\Release .\%build_extern_name%\google-test\%default_lib_name% *.lib /Z /R:5 /W:5 /V /MT
+@robocopy %google_test_build_folder%\bin\Debug .\%build_extern_name%\google-test\%default_lib_name% *.pdb /Z /R:5 /W:5 /V /MT
+@robocopy %google_test_build_folder%\bin\Release .\%build_extern_name%\google-test\%default_lib_name% *.pdb /Z /R:5 /W:5 /V /MT
 @robocopy %google_test_build_folder%\..\googletest\include .\%build_extern_name%\google-test\%default_inc_name% /S /E /Z /R:5 /W:5 /V /MT
 @robocopy %google_test_build_folder%\..\googlemock\include .\%build_extern_name%\google-test\%default_inc_name% /S /E /Z /R:5 /W:5 /V /MT
 @rmdir /s /q %google_test_build_folder%
@@ -60,9 +62,13 @@ if exist %fmt_build_folder% (
 
 @robocopy %fmt_build_folder%\Debug .\%build_extern_name%\fmt\%default_lib_name% *.lib /Z /R:5 /W:5 /V /MT
 @robocopy %fmt_build_folder%\Release .\%build_extern_name%\fmt\%default_lib_name% *.lib /Z /R:5 /W:5 /V /MT
+@robocopy %fmt_build_folder%\fmt.dir\Debug .\%build_extern_name%\fmt\%default_lib_name% *.pdb /Z /R:5 /W:5 /V /MT
+@pushd .\%build_extern_name%\fmt\%default_lib_name%
+@ren fmt.pdb fmtd.pdb
+@popd
 @robocopy %fmt_folder%\include .\%build_extern_name%\fmt\%default_inc_name% /S /E /Z /R:5 /W:5 /V /MT
 @robocopy %fmt_folder%\src .\%build_extern_name%\fmt\%default_src_name% /S /E /Z /R:5 /W:5 /V /MT
-@rmdir /s /q %fmt_build_folder%
+::@rmdir /s /q %fmt_build_folder%
 
 echo ******************************************
 echo * End build Fmt                          *
