@@ -7,6 +7,6 @@
 [submodule "extern/hayai"]
 	path = extern/hayai
 	url = https://github.com/nickbruun/hayai.git
-[submodule "extern\\spdlog"]
-	path = extern\\spdlog
+[submodule "extern/spdlog"]
+	path = extern/spdlog
 	url = https://github.com/gabime/spdlog.git
